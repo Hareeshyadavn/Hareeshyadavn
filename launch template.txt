@@ -1,0 +1,93 @@
+{
+    "LaunchTemplateData": {
+        "EbsOptimized": true,
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::138342230722:instance-profile/ec2-ssm-action"
+        },
+        "BlockDeviceMappings": [
+            {
+                "DeviceName": "/dev/sda1",
+                "Ebs": {
+                    "Encrypted": false,
+                    "DeleteOnTermination": true,
+                    "SnapshotId": "snap-07ac292609fbac96d",
+                    "VolumeSize": 8,
+                    "VolumeType": "gp2"
+                }
+            }
+        ],
+        "NetworkInterfaces": [
+            {
+                "AssociatePublicIpAddress": true,
+                "DeleteOnTermination": true,
+                "Description": "",
+                "DeviceIndex": 0,
+                "Groups": [
+                    "sg-09157c7e40436a786"
+                ],
+                "InterfaceType": "interface",
+                "Ipv6Addresses": [],
+                "PrivateIpAddresses": [
+                    {
+                        "Primary": true,
+                        "PrivateIpAddress": "172.31.36.117"
+                    }
+                ],
+                "SubnetId": "subnet-0af177b78bd334356",
+                "NetworkCardIndex": 0
+            }
+        ],
+        "ImageId": "ami-0989fb15ce71ba39e",
+        "InstanceType": "t3.micro",
+        "KeyName": "r",
+        "Monitoring": {
+            "Enabled": false
+        },
+        "Placement": {
+            "AvailabilityZone": "eu-north-1b",
+            "GroupName": "",
+            "Tenancy": "default"
+        },
+        "DisableApiTermination": true,
+        "InstanceInitiatedShutdownBehavior": "stop",
+        "TagSpecifications": [
+            {
+                "ResourceType": "instance",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "ranga"
+                    }
+                ]
+            }
+        ],
+        "CreditSpecification": {
+            "CpuCredits": "unlimited"
+        },
+        "CpuOptions": {
+            "CoreCount": 1,
+            "ThreadsPerCore": 2
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "HttpTokens": "optional",
+            "HttpPutResponseHopLimit": 1,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "PrivateDnsNameOptions": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": true,
+            "EnableResourceNameDnsAAAARecord": false
+        }
+    }
+}

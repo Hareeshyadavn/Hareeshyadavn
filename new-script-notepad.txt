@@ -260,4 +260,141 @@ do
                 sum=$(($sum+$i))
         fi
 done
-echo "$sum"                                                                                                                                                                       
+echo "$sum"                      
+
+****#$**#*#*****#*#*
+
+#!/bin/bash
+
+sum=0
+#starting iteration value
+
+i=0
+#iterate the loop for 10 times
+while [ $i -le 10 ]
+do
+        #check the value for i
+        if [[ $i -gt 5 ]]; then
+                echo "terminate"
+        break
+        fi
+        #sum of numbers from starting to end
+        sum=$((sum+$i))
+        #increment the value by 1 for every iteration 
+        ((i++))
+done
+#print the sum of numbers
+echo "$sum"
+
+
+*$#**#**#*#*#*#*#*#*#*******##
+
+read files line by line
+#!/bin/bash
+#
+#check the arguments
+if [[ $# -ne o ]]; then
+        #enter the file name
+        filename=$1
+        #provide initial value
+i=1
+#read the file line by line
+        while read line;
+        do
+                #print the lines
+                echo "$i- $line"
+                #provide the increment value by one
+                ((i++))
+                #close the loop and provide filename
+        done < $filename
+else
+        #print if argument missing
+        echo "missing arrgument"
+fi
+****#******#*****#
+
+CREATE CONTINUOS LOOP
+
+
+#!/bin/bash
+
+# Initialize the counter
+n=1
+# Declare an infinite loop
+while :
+do
+    printf "The current value of n=$n\n"
+    if [ $n == 3 ]
+    then
+        echo "good"
+    elif [ $n == 5 ]
+    then
+        echo "bad"
+    elif [ $n == 7 ]
+    then
+        echo "ugly"
+    elif [ $n == 10 ]
+    then
+        exit 0
+    fi  
+    # Increment the value of n by 1
+    ((n++))
+
+done
+# Take the filename that will be created
+read filename
+# Read the content of the file from the terminal
+while read line
+do
+    echo $line >> $filename
+done
+
+*****#*****#*****#****         
+
+i=5
+for (( i=5; i<=50; i=i+10 ))
+do
+echo "$i"
+done                                                      
+
+
+OUTPUT= 5,15,25,35,45
+
+*****#******#******#*****
+
+Pass Return Value from Function:
+Bash function can pass both numeric and string values. How you can pass a string value from the function is shown in the following example. Create a file named, ‘function_return.sh’ and add the following code. The function, greeting() returns a string value into the variable, val which prints later by combining with other string.
+
+#!/bin/bash
+function greeting() {
+
+str="Hello, $name"
+echo $str
+
+}
+
+echo "Enter your name"
+read name
+
+val=$(greeting)
+echo "Return value of the function is $val"
+
+*****#******#******
+
+Send Email:
+You can send email by using ‘mail’ or ‘sendmail’ command. Before using these commands, you have to install all necessary packages. Create a file named, ‘mail_example.sh’ and add the following code to send the email.
+
+#!/bin/bash
+Recipient=”admin@example.com”
+Subject=”Greeting”
+Message=”Welcome to our site”
+`mail -s $Subject $Recipient <<< $Message`
+
+***#*****#*****
+#!/bin/bash
+
+echo "Wait for 5 seconds"
+sleep 5
+echo "Completed"
+
+****#****#***#*****                                                                                  

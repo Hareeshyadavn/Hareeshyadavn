@@ -1,6 +1,8 @@
 #!/bin/bash
 
 #installing jenkins on ubuntu user
+#to install on ubuntu, run this command
+#curl -s <url of git file > | bash
 
 
 echo -e "\n-------updating the linux-----\n"

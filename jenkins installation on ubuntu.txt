@@ -40,7 +40,7 @@ sleep 2
   
   sudo systemctl status jenkins
   
-  echo -e "\n-------starting the linux-----\n"
+  echo -e "\n-------starting the linux--------\n"
   
   sudo systemctl start jenkins
   

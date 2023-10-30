@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# run with sudo previlage
 #install httpd (amazon Linux 2version)
 
 echo "---update the linux----"
@@ -16,9 +16,8 @@ sudo systemctl enable httpd
 
 echo "----starting httpd in linux----"
 
-systemctl start httpd
+sudo systemctl start httpd
 
 echo "----creating index.html file in path /var/www/html/----"
 
-sudo echo"<h1>hello world! this is $(hostname-f)</h1>">
-/var/www/html/index.html
+sudo echo "hello myvpc instance" > /var/www/html/index.html

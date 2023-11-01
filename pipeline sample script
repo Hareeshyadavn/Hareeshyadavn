@@ -4,23 +4,23 @@ agent none
 		stage ('build') {
 		agent any
 			steps {
-			sh sleep 5
+			sh 'sleep 5'
 			}
 		}
 		stage ('test') {
 		agent { label 'master' }
 			steps {
-			sh sleep 5
+			sh 'sleep 5'
 			}
 		}
 			stage ('deploy') {
 			steps {
-			sh sleep 5
+			sh 'sleep 5'
 			}
 		}
 		stage ('build1') {
 			steps {
-			sh sleep 5
+			sh 'sleep 5'
 			}
 		}
 	}

@@ -14,11 +14,13 @@ agent none
 			}
 		}
 			stage ('deploy') {
+			agent { label 'slave2' }
 			steps {
 			sh 'sleep 5'
 			}
 		}
 		stage ('build1') {
+		agent { label 'master' }
 			steps {
 			sh 'sleep 5'
 			}

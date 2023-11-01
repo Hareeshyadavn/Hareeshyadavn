@@ -2,11 +2,13 @@ pipeline {
 agent none
 	stages {
 		stage ('build') {
+		agent any
 			steps {
 			sh sleep 5
 			}
 		}
 		stage ('test') {
+		agent { label 'master' }
 			steps {
 			sh sleep 5
 			}

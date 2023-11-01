@@ -1,4 +1,3 @@
-#!/bin/bash
 test='temp empty file'
 test1='check file'
 pipeline{
@@ -15,8 +14,7 @@ pipeline{
 			stage ('step2') {
 			agent label 'master'
 				step {
-				#!/bin/bash/
-				pwd
+				sh pwd
 				ls
 				sh "echo $test1"
 				}

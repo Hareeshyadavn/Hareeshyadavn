@@ -1,37 +1,28 @@
 pipeline {
-    agent any
-    
-    stages {
-        stage('BUILD') {
-            steps {
-                sh '''
-                    sleep 5
-                '''
-            }
-        }   
-
-        stage('TEST ALL') {
-          parallel {
-              stage('TEST-WINDOWS') {
-                  steps {
-                      sh """
-                          sleep 5
-                      """
-                  }
-              }   
-      
-              stage('TEST-LINUX') {
-                  steps {
-                      sh 'sleep 5'
-                  }
-              }
-          }
-        }
-
-        stage('DEPLOY') {
-            steps {
-                sh 'sleep 5'
-            }
-        }   
-    }
-}
+	agent none
+		stages {
+			stage ('build') {
+				agent label 'slave2'
+				steps {
+				sh sleep 2
+				}
+			}
+			stage('test all') {
+			parallel {
+			stage ('test') {
+			agent label 'master'
+				steps {
+				sh sleep 2
+				}
+			}
+			stage ('deploy') {
+			agent label 'slave2'
+				steps {
+				sh sleep 2
+				}
+			}
+			}
+		}
+		}
+		
+	}

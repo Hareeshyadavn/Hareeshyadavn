@@ -19,7 +19,7 @@ agent none
 			sh 'sleep 5'
 			}
 		}
-		stage ('build1') {
+		stage ('build-test') {
 		agent { label 'master' }
 			steps {
 			sh 'sleep 5'

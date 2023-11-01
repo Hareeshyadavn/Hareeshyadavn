@@ -1,8 +1,7 @@
 pipeline {
-agent none
+agent any
 	stages {
 		stage ('build')  {
-		agent { label 'slave2' }
 			steps {
 			sh 'sleep 5'
 			}
@@ -10,19 +9,16 @@ agent none
   stage ('test all') {
   parallel {
 		stage ('test') {
-		agent { label 'master' }
 			steps {
 			sh 'sleep 5'
 			}
 		}
 			stage ('deploy') {
-			agent { label 'slave2' }
 			steps {
 			sh 'sleep 5'
 			}
 		}
 		stage ('build-test') {
-		agent { label 'master' }
 			steps {
 			sh 'sleep 5'
 			}
@@ -30,7 +26,6 @@ agent none
   }
 }
 		stage ('build1')  {
-		agent { label 'slave2' }
 			steps {
 			sh 'sleep 5'
 			}

@@ -19,7 +19,7 @@ agent any
 			}
 		}
 		stage ('build-test') {
-			 {
+			steps {
 			sh 'sleep 5'
 			}
 		}

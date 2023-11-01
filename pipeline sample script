@@ -25,5 +25,11 @@ agent none
 			sh 'sleep 5'
 			}
 		}
+		stage ('build1')  {
+		agent { label 'slave2' }
+			steps {
+			sh 'sleep 5'
+			}
+		}
 	}
 }

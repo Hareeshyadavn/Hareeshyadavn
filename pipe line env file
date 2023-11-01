@@ -22,8 +22,8 @@ pipeline{
 			stage ('step3') {
 			agent label 'slave2'
 				steps {
-				sh sleep 2
-				"echo $test"
+				sh 'sleep 2'
+				'echo $test'
 				}
 			}
 			}

@@ -14,7 +14,7 @@ pipeline {
 			parallel {
 			stage ('step2') {
 			agent label 'master'
-				step {
+				steps {
 				sh sleep 5
 				}
 			}

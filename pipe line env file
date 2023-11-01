@@ -1,0 +1,22 @@
+pipeline {
+  agent none
+  environment {
+      TEST = 'this is env test file'
+      TEST1 = 'this is env test file1'
+  }  
+  stages {
+    stage('STAGE 1'){
+        agent { label 'master' }
+        steps {
+          sh " "
+        }  
+    }  
+    stage('STAGE 2'){
+        agent any
+        steps {  
+          echo "${TEST}"
+          sh "echo $TEST1"
+        }  
+    }  
+  }  
+}

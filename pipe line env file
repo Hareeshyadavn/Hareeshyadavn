@@ -1,22 +1,36 @@
-pipeline {
-  agent none
-  environment {
-      TEST = 'this is env test file'
-      TEST1 = 'this is env test file1'
-  }  
-  stages {
-    stage('STAGE 1'){
-        agent { label 'master' }
-        steps {
-          sh " "
-        }  
-    }  
-    stage('STAGE 2'){
-        agent any
-        steps {  
-          echo "${TEST}"
-          sh "echo $TEST1"
-        }  
-    }  
-  }  
+#!/bin/bash
+test='temp empty file'
+test1='check file'
+pipeline{
+	agent none
+		stages {
+			stage ('step1') {
+			agent label 'slave2'
+				steps {
+				sh "echo $test"
+				}
+			}
+			stage ('test all') {
+			parallel {
+			stage ('step2') {
+			agent label 'master'
+				step {
+				#!/bin/bash/
+				pwd
+				ls
+				sh "echo $test1"
+				}
+			}
+			stage ('step3') {
+			agent label 'slave2'
+				steps {
+				sh sleep 2
+				"echo $test"
+				}
+			}
+			}
+		}
+		}
+		
+		
 }

@@ -1,33 +1,41 @@
 pipeline {
 	agent none
 	environment {
-	test='temp empty file'
-	test1='check file' }
+	test= 'test madi file'
+	test1= 'test3'
+	}
 		stages {
-			stage ('step1') {
-			agent label 'slave2'
+			stage ('build') {
+				agent {label 'slave2'}
 				steps {
-				sh sleep 5
+				sh '''
+				ls
+				pwd
+				date 
+				'''
 				}
 			}
-			stage ('test all') {
+			stage('test all') {
 			parallel {
-			stage ('step2') {
-			agent label 'master'
+			stage ('test') {
+			agent {label 'master'}
 				steps {
-				sh sleep 5
+				sh ''' 
+				ls 
+				pwd
+				'''
 				}
 			}
-			stage ('step3') {
-			agent label 'slave2'
+			stage ('deploy') {
+			agent {label 'slave2'}
 				steps {
-				sh 'sleep 2'
-				"echo $test"
+				sh '''
+				echo $test
+				'''
 				}
 			}
 			}
 		}
 		}
 		
-		
-}
+	}

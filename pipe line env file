@@ -1,41 +1,49 @@
 pipeline {
 	agent none
-	environment {
-	test= 'test madi file'
-	test1= 'test3'
+	environment{
+	build='build environment'
+	test='test environment'
 	}
-		stages {
-			stage ('build') {
-				agent {label 'slave2'}
-				steps {
-				sh '''
-				ls
-				pwd
-				date 
-				'''
-				}
+	stages {
+		stage ('built') {
+		agent {label 'slave2'}
+			steps {
+			sh ''' 
+			pwd 
+			echo $build
+			sleep 2 '''
 			}
-			stage('test all') {
-			parallel {
-			stage ('test') {
+		}
+		stage ('test all') {
+		parallel {
+			stage ('test1') {
 			agent {label 'master'}
-				steps {
-				sh ''' 
-				ls 
-				pwd
-				'''
-				}
-			}
-			stage ('deploy') {
-			agent {label 'slave2'}
 				steps {
 				sh '''
 				echo $test
-				'''
+				sleep 2 '''
 				}
 			}
+			stage ('test2') {
+			agent {label 'master'}
+				steps {
+				sh '''
+				echo $test
+				sleep 2 '''
+				}
 			}
 		}
 		}
+		stage ('deploy') {
+			agent {label 'master'}
+				steps {
+				sh '''
+				echo $build
+				echo $test
+				sleep 2 '''
+				}
+			}
 		
 	}
+}
+

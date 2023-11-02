@@ -6,7 +6,7 @@ pipeline {
 	}
 	stages {
 		stage ('built') {
-		agent {label 'slave2'}
+		agent {label 'slave1'}
 			steps {
 			sh ''' 
 			pwd 

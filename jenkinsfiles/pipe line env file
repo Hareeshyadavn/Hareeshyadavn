@@ -1,0 +1,49 @@
+pipeline {
+	agent none
+	environment{
+	build='build environment'
+	test='test environment'
+	}
+	stages {
+		stage ('built') {
+		agent {label 'slave1'}
+			steps {
+			sh ''' 
+			pwd 
+			echo $build
+			sleep 2 '''
+			}
+		}
+		stage ('test all') {
+		parallel {
+			stage ('test1') {
+			agent {label 'master'}
+				steps {
+				sh '''
+				echo $test
+				sleep 2 '''
+				}
+			}
+			stage ('test2') {
+			agent {label 'master'}
+				steps {
+				sh '''
+				echo $test
+				sleep 2 '''
+				}
+			}
+		}
+		}
+		stage ('deploy') {
+			agent {label 'master'}
+				steps {
+				sh '''
+				echo $build
+				echo $test
+				sleep 2 '''
+				}
+			}
+		
+	}
+}
+

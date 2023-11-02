@@ -13,7 +13,7 @@ agent any
 			sh 'sleep 2'
 			}
 		}
-			stage ('deploy') {
+			stage ('deploy1') {
 			steps {
 			sh 'sleep 2'
 			}

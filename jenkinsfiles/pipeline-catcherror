@@ -6,30 +6,18 @@ agent any
 			sh 'sleep 2'
 			}
 		}
-  stage ('test all') {
-  parallel {
 		stage ('test') {
 			steps {
-			sh 'sleep 2'
+			catchError (message: 'even if this fails we continue to next stages') ,buildResult: 'success' ,stageResult: 'unstable'{
+			sh '''exit 1'''
+				}
 			}
 		}
-			stage ('deploy1') {
-			steps {
-			catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE')
-			sh 'sleep 2'
-			}
-		}
-		stage ('build-test') {
+		stage ('deploy')  {
 			steps {
 			sh 'sleep 2'
-			}
-		}
-  }
-}
-		stage ('build1')  {
-			steps {
-			sh 'sleep 5'
 			}
 		}
 	}
+
 }

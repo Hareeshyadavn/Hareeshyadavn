@@ -1,0 +1,23 @@
+pipeline {
+	agent any 
+		parameters {
+		string defaultValue: 'TEST',
+		description: 'deploy to particular env', 
+		name: 'ENVV_NAME'
+}
+		stages {
+			stage ('CHECKOUT') {
+			when {
+				expression {
+					params.ENVV_NAME == 'TEST'
+				}
+			 }
+				steps {
+					script {
+						' sleep 2'
+				}
+				}
+			}
+		}
+
+}

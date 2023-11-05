@@ -1,0 +1,51 @@
+
+boolean testResult = true
+pipeline {
+	agent any
+		stages {
+			stage ('BUILD') {
+				steps {
+				sh 'sleep 2'
+				}
+			}
+		
+		stage ('TEST'){
+			steps {
+				script {
+				try {
+				echo "running scripts in this stage"
+				sh 'sleep 2'
+				sh 'exit 1'
+				}catch (Exception e) {
+				echo "stage test failed due to error"
+				testResult = false}
+				}
+			}
+		}
+		stage ('DEPLOY'){
+			steps {
+				script {
+				if (testResult){
+				echo "running stage test so deploy succed"
+				sh 'sleep 2'
+				sh 'exit 0'
+				}else  {
+				echo "stage test failed so deploy fails"
+					}
+				}
+			}
+		}
+		stage ('NOTIFICATION'){
+			steps {
+				script {
+				if (!testResult){
+				echo "deploy stage fails sending noifictn"
+				sh 'sleep 2'
+				}else  {
+				echo "successfuly deployd"
+					}
+				}
+			}
+		}
+	}	
+}

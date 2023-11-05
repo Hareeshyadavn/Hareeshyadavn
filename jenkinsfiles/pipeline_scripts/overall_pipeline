@@ -33,7 +33,7 @@ agent any
 				}
 				}
 				steps {
-			   sh 'sleep 2'
+			   sh 'sleep 3'
 			   sh "echo 'stage parallel test' "
 				sh "echo 'test parameters inserted'"
 			}

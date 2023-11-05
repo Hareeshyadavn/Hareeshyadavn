@@ -2,7 +2,8 @@
 pipeline {
 agent any
 	options {
-	timeout ( time:30 ,unit:'SECONDS')
+	timeout ( time:120 ,unit:'SECONDS')
+	timestamps()
 	}
 	environment {
 	TEST = 'deploy to test env'

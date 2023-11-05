@@ -1,5 +1,5 @@
 
-boolean testResult = true
+
 pipeline {
 	agent any
 		stages {

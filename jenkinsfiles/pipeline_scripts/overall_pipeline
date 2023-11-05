@@ -1,0 +1,87 @@
+
+pipeline {
+agent any
+	options {
+	timeout ( time:30 ,unit:'SECONDS')
+	}
+	environment {
+	TEST = 'deploy to test env'
+	TEST1 = 'deploy to PROD env'
+		}
+	parameters {
+	string defaultValue: 'PROD', 
+	description: 'deploy to respective env', 
+	name: 'ENV', trim: true
+		}
+
+	stages {
+		stage ('build')  {
+			steps {
+			catchError(message: 'skipped this stage and move to next stage' ,buildResult: 'SUCCESS' ,stageResult: 'UNSTABLE'){
+			    sh '''sleep 2
+				echo $TEST1
+				exit 0'''}
+			}
+		}
+			stage ('test all') {
+			parallel {
+			stage ('test') {
+			when {
+				expression {
+					params.ENV == 'TEST'
+				}
+				}
+				steps {
+			   sh 'sleep 2'
+			   sh "echo 'stage parallel test' "
+				sh "echo 'test parameters inserted'"
+			}
+		}
+			stage ('deploy1') {
+				steps {
+				sh 'sleep 2'
+
+			}
+		}
+			stage ('build-test') {
+			steps {
+			sh 'sleep 3'
+			}
+		}
+			}
+		}
+		stage ('deploy')  {
+		when {
+				expression {
+					params.ENV == 'DEPLOY'
+				}
+				}
+		environment {
+		CRED = credentials ('secret-text-token')}
+			steps {
+		
+			sh 'sleep 5'
+			sh "echo 'this is my secret text $CRED'"
+			}
+		}
+	}
+	post {
+		always {
+		cleanWs() }
+		changed	{
+		echo "job output is different from previous step"}
+		
+		success {
+		echo "all stages are success "}
+		failure {
+		echo " some stages failed sending notification"}
+		aborted {
+		echo " job is aborted"}
+		unstable {
+		echo " built is success but un healthy"}
+		unsuccessful {
+		echo "job is unsuccessful"
+		}
+	}
+}
+

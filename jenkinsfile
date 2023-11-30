@@ -12,8 +12,8 @@ pipeline {
     stage ('Build') {
       steps {
         sh '''
-        	cd ./jenkinsfiles
-          cat ./jenkinsfiles/sample.war
+        	cd ./jenkinsfiles/pipeline_scripts
+          cat ./jenkinsfiles/pipeline_scripts/sample.war
         	mvn clean package
         	cd ./target/
         	ls

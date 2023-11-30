@@ -12,8 +12,8 @@ pipeline {
     stage ('Build') {
       steps {
         sh '''
-        	cd ./maven/simple-war 
-          cat ./src/main/webapp/index.jsp
+        	cd .
+          cat ./jenkinsfiles/sample.war
         	mvn clean package
         	cd ./target/
         	ls
@@ -28,10 +28,10 @@ pipeline {
           // onFailure: false                 –> Flag used to control the deployment, 
           //                                     If pipeline Job fails, below deploy block will not run.
           // war: ‘target/*.war’ –> Your war file name
-          deploy adapters: [tomcat9(credentialsId: 'tomcat_manager', path: '', url: 'http://65.2.40.144:8080/')], 
-                           contextPath: '/itdefined-war-1.0.0', 
+          deploy adapters: [tomcat9(credentialsId: 'tomcat_manager', path: '', url: 'http://16.171.227.219:8080/')], 
+                           contextPath: '/sample.war', 
                            onFailure: false, 
-                           war: 'maven/simple-war/target/*.war' 
+                           war: 'maven/sample.war/target/*.war' 
         }
       }
     }

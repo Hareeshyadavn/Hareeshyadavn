@@ -13,7 +13,7 @@ pipeline {
       steps {
         sh '''
         	cd .
-          cat . index.jsp
+          cat ./index.jsp
         	mvn clean package
         	cd ./target/
         	ls

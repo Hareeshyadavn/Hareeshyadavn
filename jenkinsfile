@@ -31,7 +31,7 @@ pipeline {
           deploy adapters: [tomcat9(credentialsId: 'tomcat_manager', path: '', url: 'http://16.171.227.219:8080/')], 
                            contextPath: '/sample.war', 
                            onFailure: false, 
-                           war: 'maven/sample.war/target/*.war' 
+                           war: './target/sample.war' 
         }
       }
     }

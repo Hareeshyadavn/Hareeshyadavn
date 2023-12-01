@@ -1,38 +1,46 @@
-
 pipeline {
 	agent any
-	triggers {
-	pollscm 'H * * * *'
-	}
-	tools {
+  
+  triggers {
+        pollSCM '* * * * *'
+  }
+
+  tools {
     maven 'maven-3.9.2' 
-	}
-		stages {
-			stage ('BUILD') {
-				step {
-				sh '''
-				cd ./maven/ 
-				cat ./maven/index.jsp
-				mvn clean package
-				cd ./maven/target/
-				ls
-				'''
-				}
-			}
-			 stage ('Deploy') {
-			steps {
-			script {
+  }
+  stages {
+    stage ('Build') {
+      steps {
+        sh '''
+        	cd ./maven/
+          cat ./maven/index.jsp
+        	mvn clean package
+        	cd ./target/
+        	ls
+           '''
+      }
+    }
+    stage ('Deploy') {
+      steps {
+        script {
           // url: ‘http://<ip_address>:8080/’ –> Your tomcat url
           // contextPath: ‘/pipeline’         –> Context path to deploy in Tomcat
           // onFailure: false                 –> Flag used to control the deployment, 
           //                                     If pipeline Job fails, below deploy block will not run.
           // war: ‘target/*.war’ –> Your war file name
-          deploy adapters: [tomcat9(credentialsId: 'tomcat_manager', path: '', url: 'http://16.171.227.219:8080/')], 
+          deploy adapters: [tomcat9(credentialsId: 'tomcat_manager', path: '', url: 'http://13.53.166.135:8080//')], 
                            contextPath: '/itdefined-war-1.0.0', 
                            onFailure: false, 
-                           war: 'maven/target/my.war' 
+                           war: 'maven/*.war' 
         }
       }
     }
-		}
+  }
+
+  // post { 
+  //     always { 
+  //         cleanWs()
+  //     }
+  // }
+
 }

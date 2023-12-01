@@ -1,12 +1,11 @@
 
 pipeline {
-	agent { label 'slave1' }
+	agent any
 	triggers {
-	pollscm '* * * * *'
+	pollscm 'H * * * *'
 	}
 	tools {
     maven 'maven-3.9.2' 
-
 	}
 		stages {
 			stage ('BUILD') {
@@ -23,23 +22,6 @@ pipeline {
 			 stage ('Deploy') {
 			steps {
 			script {
-
-  }
-  stages {
-    stage ('Build') {
-      steps {
-        sh '''
-        	cd ./maven/
-        	mvn clean package
-        	cd ./target/
-        	ls
-           '''
-      }
-    }
-    stage ('Deploy1') {
-      steps {
-        script {
-
           // url: ‘http://<ip_address>:8080/’ –> Your tomcat url
           // contextPath: ‘/pipeline’         –> Context path to deploy in Tomcat
           // onFailure: false                 –> Flag used to control the deployment, 
@@ -54,5 +36,3 @@ pipeline {
     }
 		}
 }
-
-

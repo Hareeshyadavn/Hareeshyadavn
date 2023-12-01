@@ -1,0 +1,45 @@
+pipeline {
+	agent { label 'slave1' }
+  
+  triggers {
+        pollSCM '* * * * *'
+  }
+
+  tools {
+    maven 'maven-3.9.2' 
+  }
+  stages {
+    stage ('Build') {
+      steps {
+        sh '''
+        	cd ./maven/
+        	mvn clean package
+        	cd ./target/
+        	ls
+           '''
+      }
+    }
+    stage ('Deploy') {
+      steps {
+        script {
+          // url: ‘http://<ip_address>:8080/’ –> Your tomcat url
+          // contextPath: ‘/pipeline’         –> Context path to deploy in Tomcat
+          // onFailure: false                 –> Flag used to control the deployment, 
+          //                                     If pipeline Job fails, below deploy block will not run.
+          // war: ‘target/*.war’ –> Your war file name
+          deploy adapters: [tomcat9(credentialsId: 'tomcat_manager', path: '', url: 'http://16.171.227.219:8080/')], 
+                           contextPath: '/sample.war', 
+                           onFailure: false, 
+                           war: 'maven/target/sample.war' 
+        }
+      }
+    }
+  }
+
+  // post { 
+  //     always { 
+  //         cleanWs()
+  //     }
+  // }
+
+}

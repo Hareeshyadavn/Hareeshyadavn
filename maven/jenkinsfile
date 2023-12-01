@@ -19,7 +19,7 @@ pipeline {
            '''
       }
     }
-    stage ('Deploy') {
+    stage ('Deploy1') {
       steps {
         script {
           // url: ‘http://<ip_address>:8080/’ –> Your tomcat url

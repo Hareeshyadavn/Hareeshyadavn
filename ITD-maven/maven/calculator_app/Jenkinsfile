@@ -26,7 +26,7 @@ pipeline {
       stage('Integration TEST') {
          steps {
             dir("ITD-maven/maven/calculator_app") {
-               sh 'sudo mvn clean integration-test'
+               sh 'mvn clean integration-test'
             }
          }
       }

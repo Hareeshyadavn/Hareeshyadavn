@@ -8,7 +8,7 @@ pipeline {
       steps {
         sh '''
         	cd ./maven/simple-war 
-          cat ./simple-war/src/main/webapp/index.jsp
+          cat ./src/main/webapp/index.jsp
         	mvn clean package
         	cd ./target/
         	ls

@@ -1,13 +1,11 @@
+<!DOCTYPE html>
 <html>
-<head>
-<title>itdefined.org!</title>
-</head>
 <body>
-	<h1>IT Defined ! webhook deploy new development</h1>
-	<p>
-		It is now
-		<%= new java.util.Date() %></p>
-	<p>
-		You are coming from 
-		<%= request.getRemoteAddr()  %></p>
+
+<h1>My website</h1>
+
+<p>My usefull subjects.</p>
+
 </body>
+</html>
+

@@ -1,9 +1,11 @@
 pipeline {
     agent any
+	tools{
+	maven 'maven-3.9.2' 
+		}
     stages {
         stage('Build') {
             steps {
-                git 'https://github.com/your-username/hello-world-pipeline.git'
                 sh 'mvn package'
             }
         }
@@ -14,7 +16,12 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
+                script{
+		deploy adapters: [tomcat9(credentialsId: 'tomcat_manager', path: '', url:'http//13.51.174.66:8081')],
+					contextPath: '/gs-maven-0.1.0.jar',
+					onFailure: false,
+					war: 'newproject/target/gs-maven-0.1.0.jar'
+		}
             }
         }
     }

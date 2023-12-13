@@ -7,13 +7,14 @@ pipeline{
 	stages{
 		stage ('BUILD'){
 			steps{
-				sh 'mvn clean package'
+				sh '''cd ./newproj1/samplewar/
+				mvn clean package '''
 			}
-		}
-		post{
+			post{
 			success{
 			echo "archiving artifacts"
-			archiveArtifacts artifacts: '**target/*.war' 
+			archiveArtifacts artifacts: '**target/*.war'
+		}
 			}
 		}
 		stage ('DEPLOY'){

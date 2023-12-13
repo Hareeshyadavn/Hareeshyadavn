@@ -15,6 +15,12 @@ pipeline {
            '''
       }
     }
+
+    stage ('Build') {
+      steps {
+        sh ' mvn test'
+		}
+	}
     stage ('Deploy') {
       steps {
         script {

@@ -7,8 +7,8 @@ pipeline{
 	stages{
 		stage ('BUILD'){
 			steps{
-				cd ./newproj1/samplewar/
-				sh 'mvn clean package'
+				sh '''cd ./newproj1/samplewar/
+				mvn clean package '''
 			}
 			post{
 			success{

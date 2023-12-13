@@ -9,11 +9,11 @@ pipeline{
 			steps{
 				sh 'mvn clean package'
 			}
-		}
-		post{
+			post{
 			success{
 			echo "archiving artifacts"
-			archiveArtifacts artifacts: '**target/*.war' 
+			archiveArtifacts artifacts: '**target/*.war'
+		}
 			}
 		}
 		stage ('DEPLOY'){

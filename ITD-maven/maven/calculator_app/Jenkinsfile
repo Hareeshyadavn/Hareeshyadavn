@@ -34,7 +34,7 @@ pipeline {
       // stage('Deploy Tomcat Using maven plugin') {
       //    steps {
       //       dir("ITD-maven/maven/calculator_app") {
-      //          sh 'sudo mvn tomcat7:deploy'
+      //          sh 'sudo mvn tomcat9:deploy'
       //       }
       //    }
       // }
@@ -42,7 +42,7 @@ pipeline {
       stage ('Deploy Tomcat Using jenkins plugin') {
          steps {
                 script {
-                    deploy adapters: [tomcat9(credentialsId: 'manager', path: '', url: 'http://13.49.222.53:8091/')], 
+                    deploy adapters: [tomcat9(credentialsId: 'manager', path: '', url: 'http://16.16.64.186:8091/')], 
                                      contextPath: '/calculator', 
                                      war: 'maven/calculator_app/target/calculator.war'
                 }

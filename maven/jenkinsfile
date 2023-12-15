@@ -26,7 +26,7 @@ pipeline {
           deploy adapters: [tomcat9(credentialsId: 'tomcat-manager', path: '', url: 'http://51.20.82.20:8091/')], 
                            contextPath: '/harish-war-1.0.0', 
                            onFailure: false, 
-                           war: 'maven/simple-war/target/har.war' 
+                           war: 'maven/simple-war/target/*.war' 
         }
       }
     }

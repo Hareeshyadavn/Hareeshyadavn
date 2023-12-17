@@ -19,7 +19,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-		deploy adapters: [tomcat9(credentialsId: 'tomcat_manager', path: '', url:'http//51.20.104.76:8091')],
+		deploy adapters: [tomcat9(credentialsId: 'tomcat_manager', path: '', url:'http//6.171.55.242:8091')],
 					contextPath: '/sample.jar',
 					onFailure: false,
 					war: 'newproject/target/sample.jar'

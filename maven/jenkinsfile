@@ -3,7 +3,12 @@ pipeline {
   tools {
     maven '3.9.5' 
   }
-  stages {
+stages {
+        stage('Git Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Hareeshyadavn/Hareeshyadavn.git'
+            }
+        }
     stage ('Build') {
       steps {
         sh '''

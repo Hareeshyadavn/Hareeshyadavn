@@ -1,7 +1,7 @@
 pipeline {
     agent any
 	tools{
-	maven 'maven-3.9.5' 
+	maven 'maven' 
 		}
     stages {
         stage('Build') {
@@ -19,7 +19,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-		deploy adapters: [tomcat9(credentialsId: 'tomcat_manager', path: '', url:'http//6.171.55.242:8091')],
+		deploy adapters: [tomcat9(credentialsId: 'tomcat_manager', path: '', url:'http//16.170.155.136:8091')],
 					contextPath: '/sample.jar',
 					onFailure: false,
 					war: 'newproject/target/sample.jar'

@@ -1,5 +1,5 @@
 pipeline {
-	agent {label 'slave3'}
+	agent {label 'slave'}
   tools {
     maven '3.9.5' 
   }
@@ -28,7 +28,7 @@ stages {
           // onFailure: false                 –> Flag used to control the deployment, 
           //                                     If pipeline Job fails, below deploy block will not run.
           // war: ‘target/*.war’ –> Your war file name
-          deploy adapters: [tomcat9(credentialsId: 'tomcat-manager', path: '', url: 'http://51.20.82.20:8091/')], 
+          deploy adapters: [tomcat9(credentialsId: 'tomcat-manager', path: '', url: 'http://16.16.26.72:8091/')], 
                            contextPath: '/harish-war-1.0.0', 
                            onFailure: false, 
                            war: 'maven/simple-war/target/*.war' 

@@ -19,7 +19,7 @@ pipeline{
 		}
 		stage ('DEPLOY'){
 			steps{
-			deploy adapters: [tomcat9(credentialsId: 'tomcat-manager', path: '', url: 'http://51.21.134.190:8091/')], contextPath: '/devOpsWeb', war: 'newproj1/samplewar/**target/*.war'
+			deploy adapters: [tomcat9(credentialsId: 'tomcat-manager', path: '', url: 'http://51.21.134.190:8091/')], contextPath: '/devOpsWeb',onFailure: false, war: 'newproj1/samplewar/**target/*.war'
 			}
 		}
 	}

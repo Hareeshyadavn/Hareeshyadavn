@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: new-deployment
+  
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: prod
+  template:
+    metadata:
+      labels:
+        app: prod
+    spec:
+      containers:
+      - name: new-deploy
+        image: harshajain/ip_app:2
+        ports:
+        - containerPort: 8080

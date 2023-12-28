@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ip-app-deployment	 
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ip-app
+  template:
+    metadata:
+      labels:
+        app: ip-app
+    spec:
+      nodeSelector:
+        env: prod
+      containers:
+      - name: ip-app
+        image: yadavn1692/repositry1:1
+        ports:
+        - containerPort: 8080

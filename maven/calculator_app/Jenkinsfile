@@ -26,7 +26,7 @@ pipeline {
       stage('Integration TEST') {
          steps {
             dir("maven/calculator_app") {
-               sh 'sudo mvn clean integration-test'
+               sh 'mvn clean integration-test'
             }
          }
       }
@@ -34,7 +34,7 @@ pipeline {
       // stage('Deploy Tomcat Using maven plugin') {
       //    steps {
       //       dir("maven/calculator_app") {
-      //          sh 'sudo mvn tomcat7:deploy'
+      //          sh 'mvn tomcat7:deploy'
       //       }
       //    }
       // }

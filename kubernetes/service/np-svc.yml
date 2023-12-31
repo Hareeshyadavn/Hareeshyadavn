@@ -5,9 +5,9 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: prod
+    app: test
   ports:
   - name: http
     port: 30000
-    targetPort: 8080
     nodePort: 30002
+    targetPort: 8080

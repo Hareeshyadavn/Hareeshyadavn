@@ -1,20 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: new-deployment
-  
+  name: nginx-deployment
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
-      app: prod
+      app: test
   template:
     metadata:
       labels:
-        app: prod
+        app: test
     spec:
       containers:
-      - name: new-deploy
+      - name: nginx
         image: harshajain/ip_app:2
         ports:
         - containerPort: 8080

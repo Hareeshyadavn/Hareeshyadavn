@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: my-pvc-ebs
+  name: my-pvc-ebs1
 spec:
   storageClassName: my-sc-dynamic-ebs
   accessModes:

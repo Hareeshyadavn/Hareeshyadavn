@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-cm-vol
+data:
+  app.properties: |
+    db_url: 16.171.33.255
+    db_user: admin

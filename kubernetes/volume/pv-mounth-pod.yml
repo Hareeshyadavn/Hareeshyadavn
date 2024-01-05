@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pvc-mount-pod4
+  name: pvc-mount-pod
 spec:
   containers:
   - name: my-contaier

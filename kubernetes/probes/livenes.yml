@@ -11,11 +11,11 @@ spec:
     args:
     - /bin/sh
     - -c
-    - touch /tmp/healthy; sleep 5; rm -f /tmp/healthy; sleep 10
+    - touch /tmp/healthy; sleep 30; rm -f /tmp/healthy; sleep 60
     livenessProbe:
       exec:
         command:
         - cat
         - /tmp/healthy
-      initialDelaySeconds: 50
+      initialDelaySeconds: 5
       periodSeconds: 5

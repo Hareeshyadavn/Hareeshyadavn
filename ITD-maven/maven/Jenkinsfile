@@ -21,8 +21,8 @@ pipeline {
             steps {
                 script {
                     deploy adapters: [tomcat9(credentialsId: 'tomcat-manager', path: '', url: 'http://13.51.241.193:8091/')], 
-                                     contextPath: '/itdefined-war-1.0.0', 
-                                     war: 'maven/simple-war/target/itdefined-war-1.0.0.war'
+                                     contextPath: '/harish-war-1.0.0.war', 
+                                     war: 'maven/simple-war/target/harish-war-1.0.0.war'
                 }
             }
         }

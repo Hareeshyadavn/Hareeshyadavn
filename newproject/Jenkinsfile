@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script{
 		deploy adapters: [tomcat9(credentialsId: 'tomcat_manager', path: '', url:'http//13.51.241.193:8091')],
-					contextPath: '/sample.jar',
+					contextPath: '/harish-war.1.0.0.war',
 					onFailure: false,
 					war: 'newproject/target/sample.jar'
 		}

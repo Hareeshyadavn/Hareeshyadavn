@@ -11,8 +11,8 @@ spec:
           - key: env
             operator: In
             values:
-            - test
-            - prod
+            - tes
+            - pro
   containers:
   - name: ip-app
     image: yadavn1692/repositry1:1

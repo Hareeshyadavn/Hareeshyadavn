@@ -1,21 +1,20 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: with-node-affinity1
+  name: with-node-affinity-test
 spec:
   affinity:
     nodeAffinity:
-      prefferedDuringSchedulingIgnoredDuringExecution:
-      - wieght: 1
-        prefference:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
         - matchExpressions:
           - key: env
             operator: In
             values:
-            - tes
-            - pro
+            - test
+            - stagging
   containers:
-  - name: ip-app
-    image: yadavn1692/repositry1:1
+  - name: nginx
+    image: nginx
     ports:
-    - containerPort: 8080
+    - containerPort: 80

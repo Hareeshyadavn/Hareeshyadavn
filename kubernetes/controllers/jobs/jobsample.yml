@@ -12,8 +12,6 @@ spec:
         - /bin/sh
         - -c
         - "sleep 10"
-      restartPolicy: Never
-  backoffLimit: 5
-  parallelism: 2
-  completions: 3
-  activeDeadlineSeconds: 10
+      restartPolicy: OnFailure
+  backoffLimit: 10
+  completions: 2

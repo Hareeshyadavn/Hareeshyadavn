@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/Hareeshyadavn/Hareeshyadavn.git
     targetRevision: main
-    path: kubernetes/controllers/jobs
+    path: kubernetes/argocd/sample
   destination:
     server: https://13.53.134.6:6443
     namespace: new-app

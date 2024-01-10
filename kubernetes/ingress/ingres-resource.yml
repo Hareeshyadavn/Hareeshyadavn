@@ -24,3 +24,10 @@ spec:
             name: cip-ipapp
             port:
               number: 30002
+      - path: /hostname
+        pathType: Prefix
+        backend:
+          service:
+            name: cip-ipapp
+            port:
+              number: 30002

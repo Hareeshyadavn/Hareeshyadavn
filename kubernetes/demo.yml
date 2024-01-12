@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      tolerations:
+      - key: my-taint
+        operator: Equal
+        value: "yes"
+        effect: NoSchedule
+      containers:
+      - name: nginx
+        image: harshajain/ip_app:2
+        ports:
+        - containerPort: 8080
+

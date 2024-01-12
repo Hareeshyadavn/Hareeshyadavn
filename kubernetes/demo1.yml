@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Statefulset
+metadata:
+  name: statef-deployment
+spec:
+  replicas: 3
+  selectors:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+  spec:
+    containers:
+    - name: my-app
+      image: harshajain/ip_app:2
+	  ports:
+      - containersPort: 80

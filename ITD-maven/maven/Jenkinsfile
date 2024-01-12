@@ -1,0 +1,31 @@
+pipeline {
+    agent {label 'slave'} 
+
+    tools {
+        maven '3.9.5'
+    }
+
+    stages {
+        stage ('Build-Maven') {
+            steps {
+                sh '''
+                    cd ./maven/simple-war/
+                    mvn clean package
+                    cd ./target/
+                    ls
+                '''
+            }
+        }
+
+        stage ('Deploy-Tomcat') {
+            steps {
+                script {
+                    deploy adapters: [tomcat9(credentialsId: 'tomcat-manager', path: '', url: 'http://13.51.241.193:8091/')], 
+                                     contextPath: '/harish-war-1.0.0.war', 
+                                     war: 'maven/simple-war/target/harish-war-1.0.0.war'
+                }
+            }
+        }
+    }
+
+}

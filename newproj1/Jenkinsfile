@@ -1,0 +1,26 @@
+
+pipeline{
+	agent {label 'slave'}
+	tools{
+	maven '3.9.5'
+	}
+	stages{
+		stage ('BUILD'){
+			steps{
+				sh '''cd ./newproj1/samplewar/
+				mvn clean package '''
+			}
+			post{
+			success{
+			echo "archiving artifacts"
+			archiveArtifacts artifacts: 'newproj1/samplewar/**target/*.war'
+		}
+			}
+		}
+		stage ('DEPLOY'){
+			steps{
+			deploy adapters: [tomcat9(credentialsId: 'tomcat-manager', path: '', url: 'http://51.20.130.9:8091/')], contextPath: '/devOpsWeb',onFailure: false, war: 'newproj1/samplewar/**target/*.war'
+			}
+		}
+	}
+}

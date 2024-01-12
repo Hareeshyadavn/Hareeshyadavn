@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: laod
+  template:
+    metadata:
+      labels:
+        app: laod
+    spec:
+      containers:
+      - name: load-app
+        image: busybox
+        command:
+        - /bin/sh
+        - -c
+        - "while true; do wget -q http://my-app-ci; done"

@@ -1,0 +1,52 @@
+pipeline {
+   agent {label 'slave'} 
+
+   tools {
+      maven '3.9.5'
+   }
+
+   stages {
+      stage('BUILD') {
+         steps {
+               sh ''' 
+                  cd maven/calculator_app
+                  mvn clean package -Dmaven.test.skip=true
+               '''
+         }
+      }
+
+      stage('UNIT TEST') {
+         steps {
+            dir("maven/calculator_app") {
+               sh 'mvn clean test'
+            }
+         }
+      }
+
+      stage('Integration TEST') {
+         steps {
+            dir("maven/calculator_app") {
+               sh 'mvn clean integration-test'
+            }
+         }
+      }
+
+      // stage('Deploy Tomcat Using maven plugin') {
+      //    steps {
+      //       dir("maven/calculator_app") {
+      //          sh 'mvn tomcat7:deploy'
+      //       }
+      //    }
+      // }
+
+      stage ('Deploy Tomcat Using jenkins plugin') {
+         steps {
+                script {
+                    deploy adapters: [tomcat9(credentialsId: 'tomcat-manager', path: '', url: 'http://51.20.130.9:8091/')], 
+                                     contextPath: '/calculator', 
+                                     war: 'maven/calculator_app/target/calculator.war'
+                }
+         }
+      }
+   }
+}

@@ -1,0 +1,23 @@
+
+pipeline {
+	agent any
+		stages {
+			stage ('CHECKOUT') {
+				steps {
+				git branch: 'main', credentialsId: 'gitrepo', 
+				url: 'https://github.com/Hareeshyadavn/Hareeshyadavn.git'
+				sh '''
+				pwd
+				ls -lrt '''
+				}
+			}
+			stage ('BUILD') {
+				steps {
+				
+				sh '''
+				pwd
+				ls -lrt '''
+				}
+			}
+		}
+}

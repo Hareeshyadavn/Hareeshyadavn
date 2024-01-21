@@ -20,4 +20,4 @@ sudo systemctl start httpd
 
 echo "----creating index.html file in path /var/www/html/----"
 
-sudo echo "hello myvpc instance" > /var/www/html/index.html
+sudo echo "<h1> hello this is $(hostname -f) <h1>" > /var/www/html/index.html

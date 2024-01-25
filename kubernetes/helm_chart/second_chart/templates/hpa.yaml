@@ -1,12 +1,12 @@
 apiVersion: autoscaling/v2
-kind: {{ .values.hpa_name }}
+kind: HorizontalPodAutoscaler 
 metadata:
   name: my-hpa
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ .values.deploymentName }}
+    name: {{ .Values.deploymentName }}
   minReplicas: 1
   maxReplicas: 10
   metrics:

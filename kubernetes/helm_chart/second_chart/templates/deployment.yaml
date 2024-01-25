@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .values.deploymentName }}
+  name: {{ .Values.deploymentName }}
 spec:
-  replicas: {{ .values.deploymentReplicas }}
+  replicas: {{ .Values.deploymentReplicas }}
   selector:
     matchLabels:
       app: test
@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: {{.values.repositry.image}}:{{ .values.repositry.tag }}
+        image: {{.Values.image.repository }}:{{ .Values.image.tag }}
         ports:
         - containerPort: 8080

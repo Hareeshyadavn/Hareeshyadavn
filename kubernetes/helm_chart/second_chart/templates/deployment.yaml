@@ -6,14 +6,22 @@ spec:
   replicas: {{ .Values.deploymentReplicas }}
   selector:
     matchLabels:
-      app: test
+      app: main-app
   template:
     metadata:
       labels:
-        app: test
+        app: main-app
     spec:
       containers:
-      - name: nginx
+      - name: my-app
         image: {{.Values.image.repository }}:{{ .Values.image.tag }}
         ports:
         - containerPort: 8080
+        resources:
+          request:
+            cpu: 200m
+            memory: 1Gi
+          limit:
+            cpu: 500m
+            memory: 2Gi
+          

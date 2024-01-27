@@ -9,4 +9,4 @@ spec:
   capacity:
     storage: 2Gi
   accessModes:
-  - ReadWriteOncePod
+  - ReadWriteOnce

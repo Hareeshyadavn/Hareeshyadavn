@@ -15,7 +15,6 @@ spec:
       containers:
       - name: load-php
         image: busybox
-        ports:
         command:
         -/bin/sh
         - -c

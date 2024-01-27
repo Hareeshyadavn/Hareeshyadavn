@@ -12,8 +12,6 @@ spec:
       labels:
         app: ip-app
     spec:
-      nodeSelector:
-        env: prod
       containers:
       - name: ip-app
         image: yadavn1692/repositry1:1

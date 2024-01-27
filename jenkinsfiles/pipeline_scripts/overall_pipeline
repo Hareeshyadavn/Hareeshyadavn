@@ -1,6 +1,6 @@
 
 pipeline {
-agent {label 'salave'}
+agent label 'salave'
 	options {
 	timeout ( time:120 ,unit:'SECONDS')
 	timestamps()

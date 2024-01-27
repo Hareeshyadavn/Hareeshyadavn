@@ -1,5 +1,5 @@
 pipeline {
-   agent {label 'slave'} 
+   agent any 
 
    tools {
       maven '3.9.5'
@@ -42,7 +42,7 @@ pipeline {
       stage ('Deploy Tomcat Using jenkins plugin') {
          steps {
                 script {
-                    deploy adapters: [tomcat9(credentialsId: 'tomcat-manager', path: '', url: 'http://13.201.5.159:8091/')], 
+                    deploy adapters: [tomcat9(credentialsId: 'tomcat-manager', path: '', url: 'http://3.108.191.217:8091/')], 
                                      contextPath: '/calculator', 
                                      war: 'maven/calculator_app/target/calculator.war'
                 }

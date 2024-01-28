@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: go-app-argo-config
-  namespace: argocd
+  namespace: default
 spec:
   project: default
   source:
@@ -10,8 +10,8 @@ spec:
     targetRevision: new-branch
     path: kubernetes/argocd/sample
   destination:
-    server: https://52.66.213.32:6443
-    namespace: argocd
+    server: https://172.31.37.234:6443
+    namespace: default
   syncPolicy:
     syncOptions:
     - CreateNamespace=true

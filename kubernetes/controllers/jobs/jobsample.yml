@@ -15,4 +15,4 @@ spec:
       restartPolicy: Never
   backoffLimit: 10
   completions: 2
-  activeDeadlineSeconds: 10
+  activeDeadlineSeconds: 300

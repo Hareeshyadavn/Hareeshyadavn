@@ -4,14 +4,14 @@ metadata:
   name: go-app-argo-config
   namespace: argocd
 spec:
-  project: dijon-12
+  project: default
   source:
     repoURL: https://github.com/Hareeshyadavn/Hareeshyadavn.git
-    targetRevision: main
-    path: kubernetes/argocd/sample
+    targetRevision: new-branch
+    path: kubernetes/argocd/
   destination:
-    server: https://13.53.134.6:6443
-    namespace: new-app
+    server: https://52.66.213.32:6443
+    namespace: argocd
   syncPolicy:
     syncOptions:
     - CreateNamespace=true

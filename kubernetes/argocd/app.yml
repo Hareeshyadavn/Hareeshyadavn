@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/Hareeshyadavn/Hareeshyadavn.git
     targetRevision: new-branch
-    path: kubernetes/argocd/
+    path: kubernetes/argocd/sample
   destination:
     server: https://52.66.213.32:6443
     namespace: argocd

@@ -20,7 +20,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Buid Docker Image'
-                    docker build -t yadavn1692/repositry1:${BUILD_NUMBER} .
+                    docker build -t yadavn1692/repositry1:v1 .
                     '''
                 }
             }
@@ -31,7 +31,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Push to Repo'
-                    docker push yadavn1692/repositry1:${BUILD_NUMBER}
+                    docker push yadavn1692/repositry1:v1
                     '''
                 }
             }
@@ -44,7 +44,7 @@ pipeline {
                         sh '''
 						cd kubernetes/argocd/sample
                         cat deploy.yaml
-                        sed -i '' "s/32/${BUILD_NUMBER}/g" deploy.yaml
+                        sed -i '' "s/v1/${BUILD_NUMBER}/g" deploy.yaml
                         cat deploy.yaml
                         git add deploy.yaml
                         git commit -m 'Updated the deploy yaml | Jenkins Pipeline'

@@ -1,0 +1,6 @@
+deploymentName: ip-app-deployment
+deploymentReplicas: 4
+image:
+  repository: harshajain/ip_app
+  tag: "1.0"
+hpa_name: HorizontalPodAutoscaler

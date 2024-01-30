@@ -17,7 +17,7 @@ pipeline {
             steps{
                 script{
                     sh '''
-		    ls
+		    docker --version
                     echo 'Buid Docker Image'
                     docker build -t yadavn1692/repositry1:v1 .
                     '''

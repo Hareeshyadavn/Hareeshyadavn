@@ -4,23 +4,14 @@ metadata:
   name: go-app-argo-config
   namespace: default
 spec:
-<<<<<<< HEAD
-  project: default
-=======
   project: demo-project
->>>>>>> cicd-auto
   source:
     repoURL: https://github.com/Hareeshyadavn/Hareeshyadavn.git
     targetRevision: new-branch
     path: kubernetes/argocd/sample
   destination:
-<<<<<<< HEAD
-    server: https://172.31.37.234:6443
+    server: https://172.31.43.108:6443
     namespace: default
-=======
-    server: https://13.126.132.164:6443
-    namespace: new-app
->>>>>>> cicd-auto
   syncPolicy:
     syncOptions:
     - CreateNamespace=true

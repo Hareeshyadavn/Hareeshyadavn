@@ -10,15 +10,14 @@ pipeline {
     stages {
         stage('Checkout K8S manifest SCM'){
             steps {
-                git credentialsId: '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', 
-                url: 'https://github.com/Hareeshyadavn/Hareeshyadavn.git',
-                branch: 'main'
+                git branch: 'new-branch', credentialsId: 'git_useraname', url: 'https://github.com/Hareeshyadavn/Hareeshyadavn.git'
             }
         }
         stage('Build Docker'){
             steps{
                 script{
                     sh '''
+		    ls
                     echo 'Buid Docker Image'
                     docker build -t yadavn1692/repositry1:v1 .
                     '''

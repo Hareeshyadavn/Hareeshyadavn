@@ -21,8 +21,8 @@ pipeline {
             steps{
                 script{
                     sh '''
-                    echo 'Buid Docker Image'
-                    sudo docker build -t yadavn1692/repositry1:v1 .
+                    echo 'Build Docker Image'
+                    docker build -t yadavn1692/repositry1:v1 .
                     '''
                 }
             }
@@ -33,7 +33,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Push to Repo'
-                    sudo docker push yadavn1692/repositry1:v1
+                    docker push yadavn1692/repositry1:v1
                     '''
                 }
             }

@@ -22,6 +22,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Build Docker Image'
+                    pwd
                     docker build -t yadavn1692/repositry1:v1 . 
                     '''
                 }

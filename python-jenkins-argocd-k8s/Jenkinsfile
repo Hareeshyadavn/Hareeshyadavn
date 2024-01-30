@@ -22,7 +22,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Build Docker Image'
-                    pwd
+                    cd python-jenkins-argocd-k8s/
                     docker build -t yadavn1692/repositry1:v1 . 
                     '''
                 }

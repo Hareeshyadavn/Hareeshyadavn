@@ -2,16 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: go-app-argo-config
-  namespace: argocd
+  namespace: default
 spec:
-  project: dijon-12
+  project: demo-project
   source:
     repoURL: https://github.com/Hareeshyadavn/Hareeshyadavn.git
-    targetRevision: main
+    targetRevision: new-branch
     path: kubernetes/argocd/sample
   destination:
-    server: https://13.53.134.6:6443
-    namespace: new-app
+    server: https://172.31.43.108:6443
+    namespace: default
   syncPolicy:
     syncOptions:
     - CreateNamespace=true

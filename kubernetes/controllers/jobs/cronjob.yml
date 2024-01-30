@@ -14,5 +14,5 @@ spec:
             command:
             - /bin/sh
             - -c
-            - "sleep 10"
+            - "sleep 10; exit 1"
           restartPolicy: Never

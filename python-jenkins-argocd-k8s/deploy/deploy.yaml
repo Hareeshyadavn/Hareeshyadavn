@@ -1,9 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-nginx-deployment
+  name: todo-app
+  labels:
+    app: nginx
 spec:
-  replicas: 2 
+  replicas: 3
   selector:
     matchLabels:
       app: nginx
@@ -13,7 +15,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: nginx
-        image: nginx
+      - name: todo
+        image: abhishekf5/todo-app:v1
         ports:
-        - containerPort: 80
+        - containerPort: 8000

@@ -22,7 +22,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Build Docker Image'
-                    docker build -t yadavn1692/repositry1:v1 .
+                    docker build . -f Dockerfile -t yadavn1692/repositry1:v1 
                     '''
                 }
             }

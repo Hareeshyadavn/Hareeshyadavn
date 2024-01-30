@@ -22,7 +22,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Buid Docker Image'
-                    docker build -t yadavn1692/repositry1:v1 .
+                    sudo docker build -t yadavn1692/repositry1:v1 .
                     '''
                 }
             }
@@ -33,7 +33,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Push to Repo'
-                    docker push yadavn1692/repositry1:v1
+                    sudo docker push yadavn1692/repositry1:v1
                     '''
                 }
             }

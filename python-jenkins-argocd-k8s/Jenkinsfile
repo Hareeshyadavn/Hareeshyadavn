@@ -2,10 +2,6 @@
 pipeline {
     
     agent any 
-	tools {
-		docker 'docker'
-	}
-    
     environment {
         IMAGE_TAG = "${BUILD_NUMBER}"
     }

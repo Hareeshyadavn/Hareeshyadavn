@@ -1,23 +1,26 @@
-		
+
 pipeline {
     
     agent any 
+    
     environment {
         IMAGE_TAG = "${BUILD_NUMBER}"
     }
     
     stages {
-        stage('Checkout K8S manifest SCM'){
-            steps {
-                git branch: 'new-branch', credentialsId: 'git_useraname', url: 'https://github.com/Hareeshyadavn/Hareeshyadavn.git'
-            }
+        
+        stage('Checkout'){
+           steps {
+                git credentialsId: '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', 
+                url: 'https://github.com/Hareeshyadavn/Hareeshyadavn.git',
+                branch: 'new-branch'
+           }
         }
-	
+
         stage('Build Docker'){
             steps{
                 script{
                     sh '''
-		    docker --version
                     echo 'Buid Docker Image'
                     docker build -t yadavn1692/repositry1:v1 .
                     '''
@@ -36,19 +39,26 @@ pipeline {
             }
         }
         
+        stage('Checkout K8S manifest SCM'){
+            steps {
+                git credentialsId: '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', 
+                url: 'https://github.com/Hareeshyadavn/Hareeshyadavn.git',
+                branch: 'new-branch'
+            }
+        }
+        
         stage('Update K8S manifest & push to Repo'){
             steps {
                 script{
                     withCredentials([usernamePassword(credentialsId: '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', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                         sh '''
-						cd kubernetes/argocd/sample
                         cat deploy.yaml
-                        sed -i '' "s/v1/${BUILD_NUMBER}/g" deploy.yaml
+                        sed -i '' "s/v1/v2/g" deploy.yaml
                         cat deploy.yaml
                         git add deploy.yaml
                         git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
                         git remote -v
-                        git push https://github.com/Hareeshyadavn/Hareeshyadavn.git HEAD:main
+                        git push https://github.com/Hareeshyadavn/Hareeshyadavn.git HEAD:new-branch
                         '''                        
                     }
                 }

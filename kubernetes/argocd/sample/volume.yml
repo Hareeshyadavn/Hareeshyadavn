@@ -1,18 +1,27 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: my-pod
+  name: todo-app
 spec:
-  containers:
-  - name: my-contaier
-    image: nginx
-    ports:
-    - containerPort: 80
-    volumeMounts:
-    - name: hostpath-vol
-      mountPath: /app/volume
-  volumes:
-  - name: hostpath-vol
-    hostPath:
-      path: /home/ubuntu/pod_data
-      type: DirectoryOrCreate
+  replicas: 4
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:    
+      containers:
+      - name: todo-app
+        image: yadavn1692/repositry1:v1
+        ports:
+        - containerPort: 8000
+        volumeMounts:
+        - name: hostpath-vol
+          mountPath: /app/volume
+     volumes:
+     - name: hostpath-vol
+       hostPath:
+         path: /home/ubuntu/pod_data
+         type: DirectoryOrCreate

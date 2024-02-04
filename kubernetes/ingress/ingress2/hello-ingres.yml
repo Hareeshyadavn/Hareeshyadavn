@@ -9,6 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
+  - host: ingress.example.com
   - http:
       paths:
       - path: /hello-world-one(/|$)(.*)

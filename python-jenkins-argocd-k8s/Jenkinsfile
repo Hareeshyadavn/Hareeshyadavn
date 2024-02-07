@@ -23,7 +23,7 @@ pipeline {
                     sh '''
                     echo 'Build Docker Image'
                     cd python-jenkins-argocd-k8s/
-                    docker build -t yadavn1692/repositry1:v2 . 
+                    sudo docker build -t yadavn1692/repositry1:v2 . 
                     '''
                 }
             }
@@ -34,7 +34,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Push to Repo'
-                    docker push yadavn1692/repositry1:v2
+                    sudo docker push yadavn1692/repositry1:v2
                     '''
                 }
             }

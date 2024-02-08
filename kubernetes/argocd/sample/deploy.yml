@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: todo-app
 spec:
   replicas: 4
   selector:
@@ -11,9 +11,9 @@ spec:
     metadata:
       labels:
         app: test
-    spec:
+    spec:    
       containers:
-      - name: nginx
-        image: harshajain/ip_app:2
+      - name: todo-app
+        image: yadavn1692/repositry1:v1
         ports:
-        - containerPort: 8080
+        - containerPort: 8000

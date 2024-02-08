@@ -11,8 +11,17 @@ spec:
         command:
         - /bin/sh
         - -c
-        - "sleep 10; exit 1"
+        - "sleep 10"
       restartPolicy: Never
   backoffLimit: 10
+<<<<<<< HEAD
+  completions: 5
+  parallelism: 3 
+  activeDeadlineSeconds: 1000
+=======
   completions: 2
   activeDeadlineSeconds: 300
+<<<<<<< HEAD
+=======
+>>>>>>> new-branch
+>>>>>>> main

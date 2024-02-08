@@ -6,9 +6,12 @@ metadata:
 spec:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   project: demo-project
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> main
 =======
 >>>>>>> main
   project: default
@@ -16,6 +19,9 @@ spec:
   project: demo-project
 >>>>>>> new-branch
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 =======
 >>>>>>> main
@@ -26,10 +32,13 @@ spec:
   destination:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     server: https://172.31.43.108:6443
     namespace: default
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> main
 =======
 >>>>>>> main
     server: https://172.31.37.199:6443
@@ -39,6 +48,9 @@ spec:
     namespace: default
 >>>>>>> new-branch
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 =======
 >>>>>>> main

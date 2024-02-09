@@ -53,6 +53,7 @@ pipeline {
                 script{
                     withCredentials([usernamePassword(credentialsId: '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', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                         sh '''
+                        cd /python-jenkins-argocd-k8s/deploy/
                         cat deploy.yaml
                         sed -i '' "s/v2/v3/g" deploy.yaml
                         cat deploy.yaml

@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: todo
-        image: abhishekf5/todo-app:v1
+        image: yadavn1692/repositry1:v2
         ports:
         - containerPort: 8000

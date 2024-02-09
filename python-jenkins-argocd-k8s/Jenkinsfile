@@ -11,7 +11,7 @@ pipeline {
         
         stage('Checkout'){
            steps {
-                git credentialsId: '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', 
+                git credentialsId: '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', 
                 url: 'https://github.com/Hareeshyadavn/Hareeshyadavn.git',
                 branch: 'new-branch'
            }
@@ -42,7 +42,7 @@ pipeline {
         
         stage('Checkout K8S manifest SCM'){
             steps {
-                git credentialsId: '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', 
+                git credentialsId: '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', 
                 url: 'https://github.com/Hareeshyadavn/Hareeshyadavn.git',
                 branch: 'new-branch'
             }
@@ -51,7 +51,7 @@ pipeline {
         stage('Update K8S manifest & push to Repo'){
             steps {
                 script{
-                    withCredentials([usernamePassword(credentialsId: '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', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                    withCredentials([usernamePassword(credentialsId: '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', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                         sh '''
                         cd /python-jenkins-argocd-k8s/deploy/
                         cat deploy.yaml

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:    
+      containers:
+      - name: todo-app
+        image: yadavn1692/repositry1:v1
+        ports:
+        - containerPort: 8000

@@ -35,7 +35,7 @@ pipeline {
               
         stage('Update K8S manifest & push to Repo'){
             steps {
-                script{
+                script{ 
                     {
                         sh '''
                         cd /python-jenkins-argocd-k8s/deploy/

@@ -61,7 +61,8 @@ pipeline {
                         git add deploy.yaml
                         git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
                         git remote -v
-                        git push -u origin head  
+                        git config --global push.default current
+                        git push   
                         '''                        
                     
                 }

@@ -44,7 +44,7 @@ pipeline {
             steps {
                 git credentialsId: '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', 
                 url: 'https://github.com/Hareeshyadavn/Hareeshyadavn.git',
-                branch: 'main'
+                branch: 'new-branch'
             }
         }
         

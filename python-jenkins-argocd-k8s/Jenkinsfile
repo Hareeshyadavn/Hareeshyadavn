@@ -51,7 +51,7 @@ pipeline {
         stage('Update K8S manifest & push to Repo'){
             steps {
                 script{
-                    withCredentials([usernamePassword(credentialsId: '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', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                    
                         sh '''
                         cd /python-jenkins-argocd-k8s/deploy/
                         cat deploy.yaml
@@ -62,7 +62,7 @@ pipeline {
                         git remote -v
                         git push 
                         '''                        
-                    }
+                    
                 }
             }
         }

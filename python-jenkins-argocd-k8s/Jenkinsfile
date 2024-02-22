@@ -53,7 +53,7 @@ pipeline {
                 script{
                     
                         sh '''
-                        cd /python-jenkins-argocd-k8s/
+                        cd ./python-jenkins-argocd-k8s/
                         cd /deploy/
                         cat deploy.yaml
                         sed -i '' "s/v2/v3/g" deploy.yaml

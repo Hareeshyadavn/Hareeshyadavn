@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cpu_utilization=$(top -bn1 | grep 'Cpu' | awk '{print $2}' | cut -d "." -f1)
-memory_usage=$(free -m | awk NR==2'{printf "%.2f%%", $3*100/$2}' | cut -d "%" -f1 | cut -d "." -f1)
+memory_usage=$(free -m | awk NR==2'{printf  $3*100/$2}' | cut -d "%" -f1 | cut -d "." -f1)
 disk_usage=$(df -h | grep 'dev' | grep -E -v '(tmp|boot)' | awk '{print $5}' | cut -d "%" -f1)
 if [ $memory_usage -gt 30 ]; then
 	echo "memory usage is up to the limit"

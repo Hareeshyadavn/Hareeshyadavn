@@ -17,7 +17,7 @@ pipeline {
         }
         stage ("Build Application"){
             steps {
-                sh '''cd /CICD
+                sh '''sudo cd /CICD
                 mvn clean package '''
             }
         }

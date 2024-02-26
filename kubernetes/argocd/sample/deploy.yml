@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: todo-app
+  name: register-app
 spec:
   replicas: 4
   selector:
@@ -16,4 +16,4 @@ spec:
       - name: todo-app
         image: yadavn1692/register-app-pipeline:1.0.0-24
         ports:
-        - containerPort: 8000
+        - containerPort: 8080

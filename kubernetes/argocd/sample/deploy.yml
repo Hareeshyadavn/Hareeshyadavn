@@ -14,6 +14,6 @@ spec:
     spec:    
       containers:
       - name: todo-app
-        image: yadavn1692/repositry1:v1
+        image: yadavn1692/register-app-pipeline:1.0.0-24
         ports:
         - containerPort: 8000

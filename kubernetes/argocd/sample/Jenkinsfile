@@ -34,6 +34,7 @@ pipeline{
                 sh """
                    git config --global user.name "Hareeshyadavn"
                    git config --global user.email "hareesh1692@gmail.com"
+                   cd kubernetes/argocd/sample/
                    git add deploy.yml
                    git commit -m "Updated Deployment Manifest"
                 """

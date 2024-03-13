@@ -1,7 +1,7 @@
 
 pipeline {
     
-    agent {label 'slave'}
+    agent {label 'jenins-agent'}
     
     environment {
         IMAGE_TAG = "${BUILD_NUMBER}"

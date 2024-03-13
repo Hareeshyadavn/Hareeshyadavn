@@ -12,7 +12,7 @@ pipeline{
 
         stage("Checkout from SCM") {
                steps {
-                   git branch: 'main', credentialsId: 'github', url: 'https://github.com/Hareeshyadavn/Hareeshyadavn.git'
+                   git branch: 'main', credentialsId: 'Hareeshyadavan', url: 'https://github.com/Hareeshyadavn/Hareeshyadavn.git'
                }
         }
 
@@ -38,8 +38,8 @@ pipeline{
                    git add deploy.yml
                    git commit -m "Updated Deployment Manifest"
                 """
-                withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
-                  sh "git push https://github.com/Hareeshyadavn/Hareeshyadavn.git"
+                withCredentials([gitUsernamePassword(credentialsId: 'Hareeshyadavan', gitToolName: 'Default')]) {
+                  sh "git push https://github.com/Hareeshyadavn/Hareeshyadavn main"
                 }
             }
         }

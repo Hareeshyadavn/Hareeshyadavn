@@ -28,14 +28,14 @@ resource "aws_security_group" "my_security_group" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Allow traffic from any IP address
+    cidr_blocks = ["0.0.0.0/0"] 
   }
 
   ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Allow SSH traffic from any IP address
+    cidr_blocks = ["0.0.0.0/0"]  
   }
 
   // Egress rules (allow outbound traffic)
@@ -43,6 +43,6 @@ resource "aws_security_group" "my_security_group" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]  # Allow traffic to any IP address
+    cidr_blocks = ["0.0.0.0/0"] 
   }
 }

@@ -55,10 +55,10 @@ pipeline {
                         sh '''
                         pwd
                         cd ./kubernetes/argocd/sample/
-                        cat deploy.yaml
+                        cat deploy.yml
                         sed -i "s/v2/v3/g" deploy.yaml
                         cat deploy.yaml
-                        git add deploy.yaml
+                        git add deploy.yml
                         git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
                         git remote -v
                         git config --global user.name

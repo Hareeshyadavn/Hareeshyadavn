@@ -21,4 +21,8 @@ rm argocd-linux-amd64
 		
 Step 4 — Handling Multiple Clusters (Optional)
 kubectl config get-contexts -o name
+
+step-5 add ekscluster to argocd
+argocd cluster add arn:aws:eks:ap-south-1:625764689828:cluster/test-eks-cluster --name t
+est
 		

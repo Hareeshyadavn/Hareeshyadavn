@@ -15,3 +15,5 @@ spec:
   - name: pvc-vol
     persistentVolumeClaim:
       claimName: my-pvc
+
+
